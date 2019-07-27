@@ -1,0 +1,8 @@
+---
+- hosts: 18.222.172.90
+  sudo: yes
+  tasks:
+          - name: copy file
+            copy:
+              src: /home/paras03/testansible/pb1.yml
+              dest: /home/ubuntu/cppb1.yml

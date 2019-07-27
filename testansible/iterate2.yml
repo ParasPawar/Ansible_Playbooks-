@@ -1,0 +1,21 @@
+---
+- hosts: all
+  become: yes
+  vars_files:
+          - users.txt
+         
+  tasks:
+          - name: add user
+            user:
+                    name: "{{item}}"
+            with_items: "{{users}}"
+          - name: allow sudo
+            lineinfile:
+                    dest: "/etc/sudoers"
+                    state: "present"
+                    regexp: "^%{{item}}"
+                    line: "%{{item}} ALL=(ALL) NOPASSWD:ALL"
+            with_items: "{{users}}" 
+          - debug:
+                  msg: " added user {{item}}"
+            with_items: "{{users}}"

@@ -1,0 +1,12 @@
+---
+- hosts: all
+  become: yes
+  vars:
+          data: ['iterate', 'loop','item']
+  tasks:
+          - name: test j2 template
+            template:
+                    src: /home/paras03/test.j2
+                    dest: /home/paras03/testj2output.txt
+                    mode: 0777
+

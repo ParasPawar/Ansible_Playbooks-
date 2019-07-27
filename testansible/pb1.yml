@@ -1,0 +1,12 @@
+---
+- hosts: 18.222.172.90
+  sudo: yes
+  tasks:
+          - name: udate index
+            apt: update_cache=yes
+
+          - name: install git
+            apt: name=git state=latest
+
+          - name: install python
+            apt: name=python3 state=latest

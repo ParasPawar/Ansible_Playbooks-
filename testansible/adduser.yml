@@ -1,0 +1,17 @@
+---
+- hosts: 18.222.172.90
+  sudo: yes
+  tasks:
+          - name: update
+            apt: update_cache=yes
+
+          - name: add user
+            user:
+                    name: paras032
+          - name: enter sudo without password
+            lineinfile:
+                    dest: /etc/sudoers
+                    state: present
+                    regexp: "^%paras032"
+                    line: "%paras032 ALL=(ALL) NOPASSWD: ALL"
+

@@ -1,0 +1,10 @@
+---
+- hosts: all
+  become: yes
+  tasks:
+          - name: remove user
+            user:
+                    name: paras3
+                    state: absent
+                    remove: yes
+

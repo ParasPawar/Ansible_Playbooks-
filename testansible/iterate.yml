@@ -1,0 +1,19 @@
+---
+- hosts: 18.221.191.222
+  become: yes
+  vars_files:
+          - mulusers.yml
+        
+  tasks:
+          - name: add user
+            user:
+                    name: "{{item}}"
+            with_items: "{{users}}"
+
+          - name: allow sudo
+            lineinfile:
+                    dest: "/etc/sudoers"
+                    state: "present"
+                    regexp: "^%{{item}}"
+                    line: "%{{item}} ALL=(ALL) NOPASSWD:ALL"
+            with_items: "{{users}}"      

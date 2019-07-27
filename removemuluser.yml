@@ -1,0 +1,15 @@
+---
+- hosts: all
+  become: yes
+  vars:
+          data:
+                  - bihari
+                  - bihari2
+  tasks:
+          - name: remove user
+            user:
+                    name: "{{item}}"
+                    state: absent
+                    remove: yes
+            with_items: "{{data}}"
+

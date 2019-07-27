@@ -1,0 +1,9 @@
+---
+- hosts: 18.222.172.90
+  sudo: yes
+  tasks:
+          - name: update index
+            apt: update_cache=yes
+
+          - name: install jdk
+            apt: name=default-jdk state=latest
